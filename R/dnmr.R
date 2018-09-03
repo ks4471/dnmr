@@ -1,4 +1,52 @@
 
+
+
+
+fet<-function(sampl,bkgrnd,success,counts=F,samp.success,bkgrnd.success,samp.fail,bkgrnd.fail,tail='greater'){  # ,alternative='greater',...
+# alternative ='greater'
+# phyper(success_in_sample, success_in_bkgd, failure_in_bkgd, sample_size, lower.tail=TRUE)
+
+#fisher.test(matrix(c(x, 13-x, 5-x, 34+x), 2, 2), alternative='less');
+# Numerical parameters in order:
+# (success-in-sample, success-in-left-part, failure-in-sample, failure-in-left-part).
+  if(!counts){
+      bkgrnd=bkgrnd[!(bkgrnd%in%sampl)]
+      test_res=list(samp.success=sum(sampl%in%success),bkgrnd.success=sum(bkgrnd%in%success),samp.fail=sum(!(sampl%in%success)),bkgrnd.fail=sum(!(bkgrnd%in%success)))
+      test_mat=matrix(unlist(test_res),nrow=2,dimnames=list(c('samp','bkgrnd'),c('success','fail')))
+      test_out=fisher.test(test_mat,alternative=tail)
+  
+#   print(test_mat)
+
+      test_res$n.genes=length(sampl)
+      test_res$FETp=(test_out$p.value)
+      test_res$fetOR=round(test_out$estimate) #,digits=3 
+      test_res$lowerCI=round(test_out$conf.int[1])#,digits=3
+      test_res$upperCI=round(test_out$conf.int[2])#,digits=3
+#   test_res$samp.success=paste(sampl[sampl%in%success],collapse=' ')
+      return(((test_res)))
+  }
+
+  if(counts){
+    test_res=list(samp.success=samp.success,bkgrnd.success=bkgrnd.success,samp.fail=samp.fail,bkgrnd.fail=bkgrnd.fail)
+    test_mat=matrix(unlist(test_res),nrow=2,dimnames=list(c('samp','bkgrnd'),c('success','fail')))
+    test_out=fisher.test(test_mat,alternative=tail)
+    
+#      print(test_mat)
+
+    test_res$n.genes=sum(samp.success,samp.fail)
+    test_res$FETp=(test_out$p.value)
+    test_res$fetOR=round(test_out$estimate,digits=3)
+    test_res$lowerCI=round(test_out$conf.int[1],digits=3)
+    test_res$upperCI=round(test_out$conf.int[2],digits=3)
+#   test_res$samp.success=paste(sampl[sampl%in%success],collapse=' ')
+    return(((test_res)))
+
+  }
+}
+
+
+
+
 dnmr<-function(dat_lis,dtb='default',phen=''){ #bkg,
 ##  dtb - required list - DNM in 'conrols' ie healthy parents & offspring
 ##   dnmDB - pre-made dataset, part of "adds" package, downloaded from http://denovo-db.gs.washington.edu/denovo-db/  ## mapped to HUGO gene ids, genes with DNM in controls removed from DNM in
