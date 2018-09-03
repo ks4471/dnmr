@@ -1,7 +1,7 @@
 
 # Enrichment test for gene set over-representation for de-novo mutations associated with neurodevelopmental disorders based on denovo-db database
 
-
+addR contains all relevant functions, including dependencies for dnmr()
 ```
 devtools::install_github("ks4471/addR")
 
