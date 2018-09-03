@@ -1,6 +1,6 @@
 
 
-# Enrichment test for gene set over-representation for de-novo mutations associated with neurodevelopmental disorders based on denovo-db database
+Enrichment test for gene set over-representation for de-novo mutations associated with neurodevelopmental disorders based on denovo-db database
 
 ``
 dnm_enrich=dnmr(input_gene_sets)
