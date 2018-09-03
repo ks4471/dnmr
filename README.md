@@ -1,11 +1,13 @@
 
 # Enrichment test for gene set over-representation for de-novo mutations associated with neurodevelopmental disorders based on denovo-db database
-`
-input_gene_sets=list(gene_set1=c("ABCA4","ABCG4","ACOT7","ACSM4"),gene_set_2=c("AASDHPPT","ABCE1","ABHD13","ABRAXAS2"))
+
+``
+Heat
+input_gene_sets=list(gene_set1=c('ABCA4','ABCG4','ACOT7','ACSM4'),gene_set_2=c('AASDHPPT','ABCE1','ABHD13','ABRAXAS2'))
 dnm_enrich=dnmr(input_gene_sets)
 Heat(as.matrix(dnm_enrich$pval),values='pval')
+``
 
-`
 Data visualisation via Heat() - a wrapper for heatmap.2 function (from addR), values='pval' converts P-values of enrichment to -log10(P-value) & adds R style significance values e.g. *** <0.0001
 
 
