@@ -1,7 +1,9 @@
 
 # Enrichment test for gene set over-representation for de-novo mutations associated with neurodevelopmental disorders based on denovo-db database
 
-*addR contains all relevant functions, including dependencies for dnmr()*
+To run enrichment, install addR - contains all relevant functions, including dependencies for dnmr()
+Data visualisation via Heat() - a wrapper for heatmap.2 function (included in addR), values='pval' converts P-values of enrichment to -log10(P-value) & adds R style significance values e.g. *** <0.0001
+
 ```
 devtools::install_github("ks4471/addR")
 
@@ -10,7 +12,7 @@ dnm_enrich=dnmr(input_gene_sets)
 Heat(as.matrix(dnm_enrich$pval),values='pval')
 ```
 
-Data visualisation via Heat() - a wrapper for heatmap.2 function (from addR), values='pval' converts P-values of enrichment to -log10(P-value) & adds R style significance values e.g. *** <0.0001
+
 
 
 # data from denovo-db:
