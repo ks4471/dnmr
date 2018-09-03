@@ -6,7 +6,9 @@ Data visualisation via Heat() - a wrapper for heatmap.2 function (included in ad
 
 ```
 devtools::install_github("ks4471/addR")
-
+```
+Input is expected as a list of named gene sets, enrichment performed for each gene set.
+```
 input_gene_sets=list(gene_set1=c("ABCA4","ABCG4","ACOT7","ACSM4"),gene_set_2=c("AASDHPPT","ABCE1","ABHD13","ABRAXAS2"))
 dnm_enrich=dnmr(input_gene_sets)
 Heat(as.matrix(dnm_enrich$pval),values='pval')
