@@ -10,7 +10,7 @@ library(adds)
 ```
 Input is expected as a list of named gene sets, enrichment performed for each gene set. Example gene list available to download from dropbox https://www.dropbox.com/s/y2szo7ywloleh92/example.gene.list.Rdata?dl=0
 ```
-input_gene_sets=list(gene_set1=c("ABCA4","ABCG4","ACOT7","ACSM4"),gene_set_2=c("AASDHPPT","ABCE1","ABHD13","ABRAXAS2"))
+input_gene_sets=list(gene_set1=c("ABCB9","ACOT4","ACTB","ADGRG7"),gene_set_2=c("AASDHPPT","ABCE1","ABHD13","ABRAXAS2"))
 dnm_enrich=dnmr(input_gene_sets)
 Heat(as.matrix(dnm_enrich$pval),values='pval')
 ```
